@@ -1,0 +1,29 @@
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    public float speed = 3f;
+    public float SpeedRotation = 200f;
+
+    public Animator anim;
+
+    public float x,y;
+
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+    private void Update()
+    {
+        x = Input.GetAxis("Horizontal");
+        y = Input.GetAxis("Vertical");
+
+        transform.Rotate(0, x * Time.deltaTime * SpeedRotation, 0);
+
+        transform.Translate(0, 0, y * speed * Time.deltaTime);
+
+
+    }
+
+}
